@@ -35,11 +35,11 @@ fi
 
 # 04 - Atualizando o sistema
 echo "> ATUALIZANDO O SISTEMA"
-sudo apt update -y
+apt update -y
 
 # 05 - Instalando o Apache
 echo "> INSTALANDO O APACHE"
-sudo apt install apache2 -y
+apt install apache2 -y
 
 # 06 - Configurando diretório padrão do Apache
 APACHE_DIR="/var/www/html"
@@ -53,15 +53,15 @@ wget -q "$URL_TEMPLATE" -O /tmp/template.zip
 
 # 09 - Instalando o unzip
 echo "> INSTALANDO O UNZIP"
-sudo apt install unzip -y
+apt install unzip -y
 
 # 10 - Descompactando o template diretamente no repositório do Apache
 echo "> DESCOMPACTANDO O TEMPLATE"
-sudo unzip -o /tmp/template.zip -d "$APACHE_DIR"
+unzip -o /tmp/template.zip -d "$APACHE_DIR"
 
 # Movendo o conteúdo da pasta descompactada para o diretório padrão do Apache
-sudo mv "$APACHE_DIR/html/"* "$APACHE_DIR"
+mv "$APACHE_DIR/html/"* "$APACHE_DIR"
 
 # 11 - Reiniciando o Apache
 echo "> REINICIANDO O APACHE"
-sudo systemctl restart apache2
+systemctl restart apache2
